@@ -8,3 +8,4 @@ Requested by [gvoze32](https://github.com/gvoze32)
 - [ ] Save the result to txt file
 - [ ] Support Python 3 (i'm developing this using Python 2)
 - [ ] OOP-ize
+- [ ] Add for apkmonk, apk-dl, uptodown support
