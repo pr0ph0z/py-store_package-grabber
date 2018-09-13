@@ -1,4 +1,5 @@
-# Python APKPure Package Name Grabber
+# Python APKPure & Google Play Package Name Grabber
+
 Requested by [gvoze32](https://github.com/gvoze32)
 
 - [x] Grab by plain link
