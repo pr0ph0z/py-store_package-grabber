@@ -10,7 +10,7 @@ python grab.py -h
 - [x] Grab by plain link
 - [ ] Grab by link on txt file
 - [x] Pagination grab
-- [ ] Save the result to txt file
+- [x] Save the result to txt file
 - [x] Support Python 3 (i'm developing this using Python 2)
 - [ ] OOP-ize
 - [x] Make it as a single file

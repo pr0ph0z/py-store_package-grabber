@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 from pprint import pprint
 from argparse import ArgumentParser
 import re
+import time
 
 try:
     # For Python 3.0 and later
@@ -31,7 +32,7 @@ hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML,
        'Accept-Encoding': 'none',
        'Accept-Language': 'en-US,en;q=0.8',
        'Connection': 'keep-alive'}
-
+data = ""
 
 site = input("Enter URL: ")
 
@@ -47,18 +48,30 @@ if re.search("apkpure", site):
 	soupw = soup.find_all("div", {"class": "category-template-title"})
 
 	for i in soupw:
-		print (i.a['href'].split("/")[2])
+		data += i.a['href'].split("/")[2]+"\n"
+
+	text_file = open("apkpure"+str(int(time.time()))+".txt", "w")
+	text_file.write(data)
+	text_file.close()
 elif re.search("play.google.com", site):
 	soupw = soup.find_all("div", {"data-thin-classes": "card no-rationale square-cover apps small"})
 
 	for i in soupw:
-		print (i.div['data-docid'])
+		data += i.div['data-docid']+"\n"
+
+	text_file = open("play.google"+str(int(time.time()))+".txt", "w")
+	text_file.write(data)
+	text_file.close()
 elif re.search("apk-dl.com", site):
 	if args.page is None:
 		soupw = soup.find_all("a", {"class": "title"})
 
 		for i in soupw:
-			print(i['href'].split("/")[2])
+			data += i['href'].split("/")[2]+"\n"
+
+		text_file = open("apk-dl"+str(int(time.time()))+".txt", "w")
+		text_file.write(data)
+		text_file.close()
 	else:
 		for c in range(1, (int(args.page) + 1)):
 			req = urllib.Request(site+"?page="+str(c), headers=hdr)
@@ -71,16 +84,28 @@ elif re.search("apk-dl.com", site):
 			soupw = soup.find_all("a", {"class": "title"})
 
 			for i in soupw:
-				print(i['href'].split("/")[2])
+				data += i['href'].split("/")[2]+"\n"
+
+		text_file = open("apk-dl"+str(int(time.time()))+".txt", "w")
+		text_file.write(data)
+		text_file.close()
 elif re.search("apkmonk.com", site):
 	soupw = soup.find_all("div", {"class": "col l7 s7 offset-l1 offset-s1 m7 offset-m1"})
 
 	for i in soupw:
-		print(i.p.a['href'].split("/")[2])
+		data += i.p.a['href'].split("/")[2]+"\n"
+
+	text_file = open("apkmonk"+str(int(time.time()))+".txt", "w")
+	text_file.write(data)
+	text_file.close()
 elif re.search("downloadatoz.com", site):
 	soupw = soup.find_all("div", {"class": "s-app-block"})
 
 	for i in soupw:
-		print (i.a['href'].encode('ascii','ignore').split("/")[0])
+		data += i.a['href'].encode('ascii','ignore').split("/")[0]
+
+	text_file = open("downloadatoz"+str(int(time.time()))+".txt", "w")
+	text_file.write(data)
+	text_file.close()
 else:
 	print("Sitelo ga support bos")
