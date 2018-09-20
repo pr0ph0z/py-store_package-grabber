@@ -74,6 +74,7 @@ elif re.search("apk-dl.com", site):
 		text_file.close()
 	else:
 		for c in range(1, (int(args.page) + 1)):
+			print("Scanning page "+str(c))
 			req = urllib.Request(site+"?page="+str(c), headers=hdr)
 			file = urllib.urlopen(req)
 			html = file.read()
