@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+from pprint import pprint
 import re
 
 try:
@@ -44,5 +45,20 @@ elif re.search("play.google.com", site):
 
 	for i in soupw:
 		print (i.div['data-docid'])
+elif re.search("apk-dl.com", site):
+	soupw = soup.find_all("a", {"class": "title"})
+
+	for i in soupw:
+		print(i['href'].split("/")[2])
+elif re.search("apkmonk.com", site):
+	soupw = soup.find_all("div", {"class": "col l7 s7 offset-l1 offset-s1 m7 offset-m1"})
+
+	for i in soupw:
+		print(i.p.a['href'].split("/")[2])
+elif re.search("downloadatoz.com", site):
+	soupw = soup.find_all("div", {"class": "s-app-block"})
+
+	for i in soupw:
+		print (i.a['href'].encode('ascii','ignore').split("/")[0])
 else:
 	print("Sitelo ga support bos")
