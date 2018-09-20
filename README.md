@@ -2,9 +2,14 @@
 
 Requested by [gvoze32](https://github.com/gvoze32)
 
+Usage Guide :
+```
+python grab.py -h
+```
+
 - [x] Grab by plain link
 - [ ] Grab by link on txt file
-- [ ] Pagination grab
+- [x] Pagination grab
 - [ ] Save the result to txt file
 - [x] Support Python 3 (i'm developing this using Python 2)
 - [ ] OOP-ize
